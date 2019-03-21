@@ -1,0 +1,40 @@
+
+--- 
+spring:
+  application:
+    name: demo_eureka_server
+  profiles: primary 
+server: 
+   port: 8761 
+eureka:
+    client:
+          serviceUrl:
+                    defaultZone : http://eureka-secondary:8762/eureka/,http://eureka-tertiary:8763/eureka/
+--- 
+ 
+spring:
+  application:
+    name: demo_eureka_server
+  profiles: secondary 
+  
+server: 
+   port: 8762 
+eureka:
+    client:
+          serviceUrl:
+                    defaultZone : http://eureka-secondary:8762/eureka/,http://eureka-tertiary:8763/eureka/
+   
+--- 
+ 
+spring:
+  application:
+    name: demo_eureka_server
+  profiles: tertiary 
+
+server: 
+   port: 8763
+eureka:
+    client:
+          serviceUrl:
+                    defaultZone : http://eureka-secondary:8762/eureka/,http://eureka-tertiary:8763/eureka/
+   
